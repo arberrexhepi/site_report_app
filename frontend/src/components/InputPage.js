@@ -1,4 +1,5 @@
 // This is the InputPage component
+
 export function InputPage() {
   return (
     <div>
