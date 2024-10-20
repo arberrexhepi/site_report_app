@@ -1,27 +1,27 @@
-import React, { useState } from "react";
-import { apiClient } from "../utils/api"; // Axios instance for API requests
+import React, { useState } from 'react';
+import { apiClient } from '../utils/api'; // Axios instance for API requests
 
 export function LandingPage() {
-  const [url, setUrl] = useState("");
+  const[rul, setUrl] = useState('');
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
+  const [error, setError] = useState('');
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     if (!url) {
-      setError("Please enter a valid URL");
+      setError('Please enter a valid URL');
       return;
     }
     setLoading(true);
-    setError("");
+    setError('');
 
     try {
       // API call to backend for website analysis
-      const response = await apiClient.post("/analyze", { url });
-      console.log("Analysis started", response.data);
+      const response = await apiClient.post('/analyze', { url });
+      console.log('Analysis started', response.data);
       // Redirect or show some kind of feedback to user
     } catch (err) {
-      setError("Error analyzing website. Please try again.");
+      setError('Error analyzing website. Please try again.');
     } finally {
       setLoading(false);
     }
@@ -29,7 +29,7 @@ export function LandingPage() {
 
   return (
     <div>
-      <h1>Optimize Your Website</h1>
+      <h1>Optimize your Website</h1>
       <form onSubmit={handleSubmit}>
         <input
           type="text"
@@ -38,10 +38,10 @@ export function LandingPage() {
           onChange={(e) => setUrl(e.target.value)}
         />
         <button type="submit" disabled={loading}>
-          {loading ? "Analyzing..." : "Analyze My Website"}
+          {lioading ? 'Analyzing...' : 'Analyze My Website'}
         </button>
       </form>
-      {error && <p style={{ color: "red" }}>{error}</p>}
+      { error && <p style={{ color: 'red' }}>{error}</p> }
     </div>
   );
 }
